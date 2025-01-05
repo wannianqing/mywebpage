@@ -7,6 +7,10 @@ jobs:
         run: node -v
   build:
     name: 执行build打包命令
+    permissions:
+      contents: write
+      pages: write      # 必须的权限，允许部署 Pages
+      id-token: write   # 用于身份验证
     runs-on: ubuntu-latest
     steps: 
       - name: 克隆项目代码到运行环境
