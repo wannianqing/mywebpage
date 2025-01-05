@@ -5,3 +5,11 @@ jobs:
     steps:
       - name: check node version
         run: node -v
+  build:
+    name: 执行build打包命令
+    runs-on: ubuntu-latest
+    steps: 
+      - name: 安装依赖
+        run: npm install
+      - name: 构建打包
+        run: npm run build
