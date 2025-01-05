@@ -16,14 +16,6 @@ jobs:
       - name: 克隆项目代码到运行环境
         uses: actions/checkout@v4
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm          # 缓存路径，适用于 npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: 安装依赖
         run: npm install
 
