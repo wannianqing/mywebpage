@@ -1,6 +1,7 @@
 on: push
 jobs:
   check-environment:
+    runs-on: ubuntu-latest
     steps:
       - name: check node version
         run: node -v
