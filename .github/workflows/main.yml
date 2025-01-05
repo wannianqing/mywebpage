@@ -16,6 +16,14 @@ jobs:
       - name: 克隆项目代码到运行环境
         uses: actions/checkout@v4
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm          # 缓存路径，适用于 npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: 安装依赖
         run: npm install
 
@@ -23,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: 部署Github Pages
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-actions@v4
         with:
           branch: gh-pages
-          folder: dist  # 构建生成的静态文件目录
+          folder: dist
