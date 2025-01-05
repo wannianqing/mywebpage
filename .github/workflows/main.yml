@@ -11,7 +11,15 @@ jobs:
     steps: 
       - name: 克隆项目代码到运行环境
         uses: actions/checkout@v4
+
       - name: 安装依赖
         run: npm install
+
       - name: 构建打包
         run: npm run build
+
+      - name: 部署Github Pages
+        uses: actions/deploy-pages@v2
+        with:
+          branch: gh-pages
+          folder: dist  # 构建生成的静态文件目录
